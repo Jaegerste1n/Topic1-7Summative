@@ -66,7 +66,8 @@ namespace Topic1_7Summative
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You've gone broke!");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Final balance: " + account);
+                    Console.WriteLine("Final balance: $" + account);
+                    Console.WriteLine("Final round: " + duelCount);
                     Console.WriteLine("");
                     Console.WriteLine("Would you like to play again?");
                     Console.WriteLine("1) Okay");
@@ -83,6 +84,8 @@ namespace Topic1_7Summative
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("You remember that Big Stinker Casino stinks.");
                         quit = true;
+                        Console.ReadLine();
+                            end();
                     }
 
                 }
@@ -136,7 +139,8 @@ namespace Topic1_7Summative
                     quit = true;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Suddenly, everything goes dark.");
-                    Console.WriteLine("Final balance: " + account);
+                    Console.WriteLine("Final balance: $" + account);
+                    Console.WriteLine("Final round: " + duelCount);
                     Console.WriteLine("");
                     Console.WriteLine("Would you like to play again?");
                     Console.WriteLine("1) Okay");
@@ -179,7 +183,8 @@ namespace Topic1_7Summative
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    Console.WriteLine("Invalid. Get out.");
+                    Console.WriteLine("Invalid. Automatically set to Rock.");
+                    playerChoice = 1;
                 }
                 if (!quit)
                 {
@@ -246,15 +251,40 @@ namespace Topic1_7Summative
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         winnings = (int)(bet * 1.5);
-                        Console.WriteLine("Winnings: " + winnings);
+                        Console.WriteLine("Winnings: $" + winnings);
+                        account = (account + winnings);
                     }
                     else if (outcome == 2)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        winnings = (int)(bet * 0.5);
-                        Console.WriteLine("Winnings: " + winnings);
+                        winnings = (int)(bet * 0.98 - 80);
+                        account = (account - (winnings + 80));
+                        Console.WriteLine("Lost: $" + (int)(winnings + 80));
+                        
+                        
                     }
-                    Console.ReadLine();
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("Continue?");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("1) Let It Ride!");
+                    Console.WriteLine("2) Chicken Out");
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    int.TryParse(Console.ReadLine(), out playerChoice);
+                    if (playerChoice == 1)
+                    {
+                        
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Coward!");
+                        Console.WriteLine("Final balance: $" + account);
+                        Console.WriteLine("Final round: " + duelCount);
+                        quit = true;
+                    }
+                    
                 }
 
 

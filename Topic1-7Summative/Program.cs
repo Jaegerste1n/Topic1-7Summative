@@ -53,7 +53,7 @@ namespace Topic1_7Summative
             Console.Clear();
             Random generator = new Random();
 
-            int bet, account = 20000;
+            int bet, outcome, account = 20000;
             int computerChoice, playerChoice, winnings, duelCount = 0;
             bool quit = false;
             computerChoice = generator.Next(10);
@@ -86,6 +86,7 @@ namespace Topic1_7Summative
                     }
 
                 }
+                outcome = 0;
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Red;
                 duelCount++;
@@ -157,41 +158,121 @@ namespace Topic1_7Summative
                 else if (playerChoice == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("You chose ");
+                    Console.WriteLine("You chose...");
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.Write("Rock!");
+                    Console.WriteLine("Rock!");
                 }
                 else if (playerChoice == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("You chose ");
+                    Console.WriteLine("You chose...");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("Paper!");
+                    Console.WriteLine("Paper!");
                 }
                 else if (playerChoice == 3)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("You chose ");
+                    Console.WriteLine("You chose...");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Scissors!");
+                    Console.WriteLine("Scissors!");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
                     Console.WriteLine("Invalid. Get out.");
                 }
-                Console.ReadLine();
-            }
+                if (!quit)
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("Jim chose...");
+                    if (computerChoice == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.WriteLine("Rock!");
+                    }
+                    else if (computerChoice == 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Paper!");
+                    }
+                    else if (computerChoice == 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Scissors!");
+                    }
+                    Console.WriteLine("");
+                    if (playerChoice == computerChoice)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("They tied!");
+                    }
+                    else if (playerChoice == 1 && computerChoice == 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("You lost!");
+                        outcome = 2;
+                    }
+                    else if (playerChoice == 2 && computerChoice == 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("You lost!");
+                        outcome = 2;
+                    }
+                    else if (playerChoice == 3 && computerChoice == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("You lost!");
+                        outcome = 2;
+                    }
+                    else if (playerChoice == 3 && computerChoice == 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("You won!");
+                        outcome = 1;
+                    }
+                    else if (playerChoice == 1 && computerChoice == 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("You won!");
+                        outcome = 1;
+                    }
+                    else if (playerChoice == 2 && computerChoice == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("You won!");
+                        outcome = 1;
+                    }
+                    if (outcome == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        winnings = (int)(bet * 1.5);
+                        Console.WriteLine("Winnings: " + winnings);
+                    }
+                    else if (outcome == 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        winnings = (int)(bet * 0.5);
+                        Console.WriteLine("Winnings: " + winnings);
+                    }
+                    Console.ReadLine();
+                }
 
+
+
+            }
+        }
+
+       
 
 
 
 
             public static void end()
-        {
-            Console.Clear();
-        }
+            {
+                Console.Clear();
+            }
+       
         }
     }
-}
+
 

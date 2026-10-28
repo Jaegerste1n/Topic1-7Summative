@@ -64,6 +64,7 @@ namespace Topic1_7Summative
                 if (account <= 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
+                    quit = true;
                     Console.WriteLine("You've gone broke!");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Final balance: $" + account);
@@ -80,14 +81,18 @@ namespace Topic1_7Summative
                     }
                     else
                     {
-
+                        //why don't you work
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("You remember that Big Stinker Casino stinks.");
                         quit = true;
-                        Console.ReadLine();
-                            end();
+                        end();
                     }
 
+                }
+                if (quit == true)
+                {
+                    Console.Clear();
+                    end();
                 }
                 outcome = 0;
                 Console.BackgroundColor = ConsoleColor.White;
@@ -157,6 +162,8 @@ namespace Topic1_7Summative
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("You remember that Big Stinker Casino stinks.");
                         quit = true;
+                        Console.ReadLine();
+                        end();
                     }
                 }
                 else if (playerChoice == 1)
@@ -298,11 +305,12 @@ namespace Topic1_7Summative
 
 
             public static void end()
-            {
-                Console.Clear();
-            }
-       
+        {
+            Console.Clear();
+            
         }
+
+    }
     }
 
 
